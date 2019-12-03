@@ -274,10 +274,13 @@ public class CFourmi implements Runnable {
 	@Override
 	public void run()
 	{
+		int i = 0;
 		while(true)
 		{
+			i++;
 			this.deplacer();
-			mApplis.compteur();
+			if(i % 50 == 0)
+				mApplis.compteur();
 		}
 
 	}

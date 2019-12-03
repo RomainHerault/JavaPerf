@@ -26,7 +26,7 @@ public class PaintingAnts extends java.applet.Applet implements Runnable {
 	private Vector<CFourmi> mColonie = new Vector<CFourmi>();
 	private CColonie mColony;
 
-	private Thread mApplis, mThreadColony;
+	private Thread mApplis;//, mThreadColony;
 
 	private Dimension mDimension;
 	private long mCompteur = 0;
@@ -50,7 +50,7 @@ public class PaintingAnts extends java.applet.Applet implements Runnable {
 	{
 		synchronized(mMutexCompteur)
 		{
-			mCompteur++;
+			mCompteur += 50;
 		}
 	}
 
@@ -600,12 +600,12 @@ public class PaintingAnts extends java.applet.Applet implements Runnable {
 		mColony.pleaseStop();
 		try
 		{
-			mThreadColony.join();
+			//mThreadColony.join();
 		}
 		catch(Exception e)
 		{}
 
-		mThreadColony = null;
+		//mThreadColony = null;
 		mApplis = null;
 	}
 
