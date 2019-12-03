@@ -270,10 +270,12 @@ public class CFourmi implements Runnable {
 		return lReponse;
 	}
 
+	//Added
 	@Override
 	public void run()
 	{
-		while(true) {
+		while(true)
+		{
 			this.deplacer();
 			mApplis.compteur();
 		}

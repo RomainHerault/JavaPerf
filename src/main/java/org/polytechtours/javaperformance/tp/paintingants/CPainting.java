@@ -341,6 +341,7 @@ public class CPainting extends Canvas implements MouseListener {
 		float R, G, B;
 		Color lColor;
 
+		//Changed
 		synchronized(mCouleurs[x][y])
 		{
 			if(!mSuspendu)
