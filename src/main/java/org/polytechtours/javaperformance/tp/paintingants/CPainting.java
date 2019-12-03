@@ -332,7 +332,7 @@ public class CPainting extends Canvas implements MouseListener {
 
 	/******************************************************************************
 	 * Titre : void colorer_case(int x, int y, Color c) Description : Cette
-	 * fonction va colorer le pixel correspondant et mettre a jour le tabmleau des
+	 * fonction va colorer le pixel correspondant et mettre a jour le tableau des
 	 * couleurs
 	 ******************************************************************************/
 	public void setCouleur(int x, int y, Color c, int pTaille)
@@ -365,9 +365,9 @@ public class CPainting extends Canvas implements MouseListener {
 					{
 						R = G = B = 0f;
 
-						for(k = 0; k < 3; k++)
+						for(l = 0; l < 3; l++)
 						{
-							for(l = 0; l < 3; l++)
+							for(k = 0; k < 3; k++)
 							{
 								m = (x + i + k - 2 + mDimension.width) % mDimension.width;
 								n = (y + j + l - 2 + mDimension.height) % mDimension.height;

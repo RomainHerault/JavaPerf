@@ -6,7 +6,7 @@ package org.polytechtours.javaperformance.tp.paintingants;
 import java.awt.Color;
 import java.util.Random;
 
-public class CFourmi {
+public class CFourmi implements Runnable {
 	// Tableau des incrémentations à effectuer sur la position des fourmis
 	// en fonction de la direction du deplacement
 	static private int[][] mIncDirection = new int[8][2];
@@ -150,6 +150,7 @@ public class CFourmi {
 		else
 		{
 			lCouleur = new Color(mPainting.getCouleur(i, j).getRGB());
+
 		}
 		if(testCouleur(lCouleur))
 		{
@@ -267,5 +268,15 @@ public class CFourmi {
 		}
 
 		return lReponse;
+	}
+
+	@Override
+	public void run()
+	{
+		while(true) {
+			this.deplacer();
+			mApplis.compteur();
+		}
+
 	}
 }
