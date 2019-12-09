@@ -5,6 +5,8 @@ package org.polytechtours.javaperformance.tp.paintingants;
 
 import java.awt.Color;
 import java.util.Random;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
 
 public class CFourmi implements Runnable {
 	// Tableau des incrémentations à effectuer sur la position des fourmis
@@ -35,10 +37,13 @@ public class CFourmi implements Runnable {
 	// nombre de déplacements de la fourmi
 	private long mNbDeplacements;
 
+	private CyclicBarrier cb;
+
 	/*************************************************************************************************
 	*/
 	public CFourmi(Color pCouleurDeposee, Color pCouleurSuivie, float pProbaTD, float pProbaG, float pProbaD, float pProbaSuivre, CPainting pPainting, char pTypeDeplacement,
-			float pInit_x, float pInit_y, int pInitDirection, int pTaille, float pSeuilLuminance, PaintingAnts pApplis)
+			float pInit_x, float pInit_y, int pInitDirection, int pTaille, float pSeuilLuminance, PaintingAnts pApplis, CyclicBarrier cb)
+
 	{
 
 		mCouleurDeposee = pCouleurDeposee;
@@ -89,6 +94,8 @@ public class CFourmi implements Runnable {
 
 		mSeuilLuminance = pSeuilLuminance;
 		mNbDeplacements = 0;
+
+		this.cb = cb;
 	}
 
 	/*************************************************************************************************
@@ -281,6 +288,18 @@ public class CFourmi implements Runnable {
 			this.deplacer();
 			if(i % 50 == 0)
 				mApplis.compteur();
+			if(i % 500 == 0)
+			{
+				try
+				{
+					cb.await();
+				}
+				catch(InterruptedException | BrokenBarrierException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 
 	}

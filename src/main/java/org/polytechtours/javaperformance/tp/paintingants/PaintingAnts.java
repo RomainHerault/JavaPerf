@@ -10,6 +10,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.StringTokenizer;
 import java.util.Vector;
+import java.util.concurrent.CyclicBarrier;
 
 import javax.swing.Timer;
 
@@ -322,6 +323,8 @@ public class PaintingAnts extends java.applet.Applet implements Runnable {
 		// type deplacement = o/d : -1 = random(o/d)
 		// probas : -1 = random(0.0 ... 1.0); x:y = random(x...y)
 
+		CyclicBarrier cb = new CyclicBarrier(lNbFourmis);
+
 		lChaine = getParameter("Fourmis");
 		if(lChaine != null)
 		{
@@ -421,7 +424,7 @@ public class PaintingAnts extends java.applet.Applet implements Runnable {
 
 				// création de la fourmi
 				lFourmi = new CFourmi(lCouleurDeposee, lCouleurSuivie, lProbaTD, lProbaG, lProbaD, lProbaSuivre, mPainting, lTypeDeplacement, lInit_x, lInit_y, lInitDirection,
-						lTaille, lSeuilLuminance, this);
+						lTaille, lSeuilLuminance, this, cb);
 				mColonie.addElement(lFourmi);
 				lNbFourmis++;
 			}
@@ -485,7 +488,7 @@ public class PaintingAnts extends java.applet.Applet implements Runnable {
 
 				// création et ajout de la fourmi dans la colonie
 				lFourmi = new CFourmi(lTabColor[i], lTabColor[lColor], lProbaTD, lProbaG, lProbaD, lProbaSuivre, mPainting, lTypeDeplacement, lInit_x, lInit_y, lInitDirection,
-						lTaille, lSeuilLuminance, this);
+						lTaille, lSeuilLuminance, this, cb);
 				mColonie.addElement(lFourmi);
 			}
 		}
