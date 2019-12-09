@@ -142,9 +142,11 @@ public class CPainting extends Canvas implements MouseListener {
 			{
 				for(j = 0; j != mDimension.height; j++)
 				{
-					mCouleurs[i][j] = new Color(mCouleurFond.getRed(), mCouleurFond.getGreen(), mCouleurFond.getBlue());
+					mCouleurs[i][j] = mCouleurFond;
 				}
 			}
+			//Color background = new Color(mCouleurFond.getRed(), mCouleurFond.getGreen(), mCouleurFond.getBlue());
+
 		}
 
 		// initialisation de la matrice de convolution : lissage moyen sur 9
