@@ -34,9 +34,9 @@ import java.awt.event.MouseListener;
 public class CPainting extends Canvas implements MouseListener {
 	private static final long serialVersionUID = 1L;
 	// matrice servant pour le produit de convolution
-	static private float[][] mMatriceConv9 = new float[3][3];
-	static private float[][] mMatriceConv25 = new float[5][5];
-	static private float[][] mMatriceConv49 = new float[7][7];
+	static private int[][] mMatriceConv9 = new int[3][3];
+	static private int[][] mMatriceConv25 = new int[5][5];
+	static private int[][] mMatriceConv49 = new int[7][7];
 	// Objet de type Graphics permettant de manipuler l'affichage du Canvas
 	private Graphics mGraphics;
 	// Objet ne servant que pour les bloc synchronized pour la manipulation du
