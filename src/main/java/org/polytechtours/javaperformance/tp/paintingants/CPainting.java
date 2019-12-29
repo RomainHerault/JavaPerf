@@ -379,16 +379,19 @@ public class CPainting extends Canvas implements MouseListener {
 								B += CPainting.mMatriceConv9[k][l] * mCouleurs[m][n].getBlue();
 							}
 						}
-						lColor = new Color((int) R, (int) G, (int) B);
-
-						mGraphics.setColor(lColor);
-
 						m = (x + i - 1 + mDimension.width) % mDimension.width;
 						n = (y + j - 1 + mDimension.height) % mDimension.height;
-						mCouleurs[m][n] = lColor;
-						if(!mSuspendu)
+						synchronized(mCouleurs[m][n])
 						{
-							mGraphics.fillRect(m, n, 1, 1);
+							lColor = new Color((int) R, (int) G, (int) B);
+
+							mGraphics.setColor(lColor);
+
+							mCouleurs[m][n] = lColor;
+							if(!mSuspendu)
+							{
+								mGraphics.fillRect(m, n, 1, 1);
+							}
 						}
 					}
 				}
@@ -412,15 +415,18 @@ public class CPainting extends Canvas implements MouseListener {
 								B += CPainting.mMatriceConv25[k][l] * mCouleurs[m][n].getBlue();
 							}
 						}
-						lColor = new Color((int) R, (int) G, (int) B);
-						mGraphics.setColor(lColor);
 						m = (x + i - 2 + mDimension.width) % mDimension.width;
 						n = (y + j - 2 + mDimension.height) % mDimension.height;
-
-						mCouleurs[m][n] = lColor;
-						if(!mSuspendu)
+						synchronized(mCouleurs[m][n])
 						{
-							mGraphics.fillRect(m, n, 1, 1);
+							lColor = new Color((int) R, (int) G, (int) B);
+							mGraphics.setColor(lColor);
+
+							mCouleurs[m][n] = lColor;
+							if(!mSuspendu)
+							{
+								mGraphics.fillRect(m, n, 1, 1);
+							}
 						}
 
 					}
@@ -445,15 +451,18 @@ public class CPainting extends Canvas implements MouseListener {
 								B += CPainting.mMatriceConv49[k][l] * mCouleurs[m][n].getBlue();
 							}
 						}
-						lColor = new Color((int) R, (int) G, (int) B);
-						mGraphics.setColor(lColor);
 						m = (x + i - 3 + mDimension.width) % mDimension.width;
 						n = (y + j - 3 + mDimension.height) % mDimension.height;
-
-						mCouleurs[m][n] = lColor;
-						if(!mSuspendu)
+						synchronized(mCouleurs[m][n])
 						{
-							mGraphics.fillRect(m, n, 1, 1);
+							lColor = new Color((int) R, (int) G, (int) B);
+							mGraphics.setColor(lColor);
+
+							mCouleurs[m][n] = lColor;
+							if(!mSuspendu)
+							{
+								mGraphics.fillRect(m, n, 1, 1);
+							}
 						}
 
 					}
