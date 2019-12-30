@@ -344,7 +344,7 @@ public class CPainting extends Canvas implements MouseListener {
 		Color lColor;
 
 		//Changed
-		synchronized(mCouleurs[x][y])
+		synchronized(mMutexCouleurs)
 		{
 			if(!mSuspendu)
 			{
@@ -453,7 +453,7 @@ public class CPainting extends Canvas implements MouseListener {
 					}
 					m = (x + i - 3 + mDimension.width) % mDimension.width;
 					n = (y + j - 3 + mDimension.height) % mDimension.height;
-					synchronized(mCouleurs[m][n])
+					synchronized(mMutexCouleurs)
 					{
 						lColor = new Color((int) R, (int) G, (int) B);
 						mGraphics.setColor(lColor);
